@@ -2,7 +2,6 @@ const connection = require('../database/connection');
 
 const bcrypt = require('bcrypt');
 
-
 module.exports = {
     //F4 
     async create(request, response){
