@@ -5,7 +5,7 @@ const {errors} = require('celebrate');
 
 const app = express();
 
-/*inplementação não utilizada. Segurança*/
+/*implementação não utilizada. Segurança*/
 app.use(cors());
 /* -------------------------------------*/
 app.use(express.json()); 
