@@ -1,6 +1,5 @@
 const express = require('express');
 
-const celebrateMethods = require('./utils/celebrateMethods');
 
 /*Import rotas de controle da api-------------------------------------------------*/
 const SessionController = require('./controllers/SessionController');
@@ -10,16 +9,23 @@ const TrackingController = require('./controllers/TrackingController');
 const ProcessController = require ('./controllers/ProcessController');
 const ValidateCodeController = require('./controllers/ValidateCodeController');
 /*---------------------------------------------------------------------------------*/
+
+/*Import metodos de controle do celebrate------------------------------------------*/
+const celebrateMethodsSession = require('./utils/celebrateMethodsSession');
+const celebrateMethodsAdmin = require('./utils/celebrateMethodsAdmin');
+/*---------------------------------------------------------------------------------*/
+
 const { celebrate } = require('celebrate');
 
 const routes = express.Router();
 
 //F4
-routes.post('/session',celebrate(celebrateMethods.createSession) ,SessionController.create);
+routes.post('/session',celebrate(celebrateMethodsSession.createSession) ,SessionController.create);
 
 //F2 e F3
-routes.post('/admin',celebrate(celebrateMethods.createAdmin) ,AdminController.create);
-routes.put('/admin',celebrate(celebrateMethods.createAdmin), AdminController.change);
+routes.get('/admin',celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminController.index);
+routes.post('/admin',celebrate(celebrateMethodsAdmin.createAdmin) ,AdminController.create);
+routes.put('/admin',celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 
 //F5
 routes.post('/sample', SampleController.create);
