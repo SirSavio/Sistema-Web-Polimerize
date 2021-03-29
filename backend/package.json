@@ -1,0 +1,31 @@
+{
+  "name": "backend-polimerize-api",
+  "version": "1.0.0",
+  "description": "Sistema para gerenciar as fases do rastreamento de amostras enviadas por pacientes",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paiva98/Sistema-Web-Polimerize.git"
+  },
+  "author": "Nilson Paiva, Henrique Campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paiva98/Sistema-Web-Polimerize/issues"
+  },
+  "homepage": "https://github.com/paiva98/Sistema-Web-Polimerize#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "celebrate": "^14.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.95.4",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
