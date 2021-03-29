@@ -1,6 +1,6 @@
 const express = require('express');
 
-const testCelebrate = require('./utils/celebrateMethods');
+const celebrateMethods = require('./utils/celebrateMethods');
 
 /*Import rotas de controle da api-------------------------------------------------*/
 const SessionController = require('./controllers/SessionController');
@@ -15,11 +15,11 @@ const { celebrate } = require('celebrate');
 const routes = express.Router();
 
 //F4
-routes.post('/session', SessionController.create);
+routes.post('/session',celebrate(celebrateMethods.createSession) ,SessionController.create);
 
 //F2 e F3
-routes.post('/admin',celebrate(testCelebrate.createAdmin) ,AdminController.create);
-routes.put('/admin',celebrate(testCelebrate.createAdmin), AdminController.change);
+routes.post('/admin',celebrate(celebrateMethods.createAdmin) ,AdminController.create);
+routes.put('/admin',celebrate(celebrateMethods.createAdmin), AdminController.change);
 
 //F5
 routes.post('/sample', SampleController.create);
