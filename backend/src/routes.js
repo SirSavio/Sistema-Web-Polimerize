@@ -11,8 +11,8 @@ const ValidateCodeController = require('./controllers/ValidateCodeController');
 /*---------------------------------------------------------------------------------*/
 
 /*Import metodos de controle do celebrate------------------------------------------*/
-const celebrateMethodsSession = require('./utils/celebrateMethodsSession');
-const celebrateMethodsAdmin = require('./utils/celebrateMethodsAdmin');
+const celebrateMethodsSession = require('./celebrate/celebrateMethodsSession');
+const celebrateMethodsAdmin = require('./celebrate/celebrateMethodsAdmin');
 /*---------------------------------------------------------------------------------*/
 
 const { celebrate } = require('celebrate');
