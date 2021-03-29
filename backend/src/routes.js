@@ -9,8 +9,8 @@ const SampleController = require('./controllers/SampleController');
 const TrackingController = require('./controllers/TrackingController');
 const ProcessController = require ('./controllers/ProcessController');
 const ValidateCodeController = require('./controllers/ValidateCodeController');
-const { celebrate } = require('celebrate');
 /*---------------------------------------------------------------------------------*/
+const { celebrate } = require('celebrate');
 
 const routes = express.Router();
 

@@ -1,6 +1,8 @@
 module.exports = {
     //F4 
-    create(requeste, response){
+    create(request, response){
+        const {name, password} = request.body;
+
         return response.json({});
     }
 }

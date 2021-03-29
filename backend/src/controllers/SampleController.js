@@ -1,6 +1,6 @@
 module.exports = {
     //F5
-    create(requeste, response){
+    create(request, response){
         return response.json({});
     }
 }

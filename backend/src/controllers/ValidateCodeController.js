@@ -1,6 +1,6 @@
 module.exports = {
     //F8
-    index(requeste, response){
+    index(request, response){
         return response.json({});
     }
 }

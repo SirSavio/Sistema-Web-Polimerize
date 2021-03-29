@@ -1,11 +1,11 @@
 module.exports = {
-    index(requeste, response){
+    index(request, response){
         return response.json({});
     },
-    create(requeste, response){
+    create(request, response){
         return response.json({});
     },
-    change(requeste, response){
+    change(request, response){
         return response.json({});
     }
 }

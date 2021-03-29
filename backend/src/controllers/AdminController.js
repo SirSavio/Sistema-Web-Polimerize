@@ -5,13 +5,13 @@ const connection = require('../database/connection');
 
 module.exports = {
     //F2
-    async create(requeste, response){
-        const {name, email} = requeste.body;
+    async create(request, response){
+        const {name, email} = request.body;
 
         /*  O método Assíncrono é melhor, pois não bloqueia o loop para realizar o processo.
             Mas, como conhecemos a regra de negócio, sabemos que não será criado inúmeros 
             administradores simultaneamente. Portanto vamos usar o método síncrono.         */
-        const password = bcrypt.hashSync(requeste.body.password, 10);
+        const password = bcrypt.hashSync(request.body.password, 10);
 
         //verificar se há somente um email
         const existEmail = await connection('admin')
@@ -36,7 +36,7 @@ module.exports = {
         return response.json({ "status": "Usuário Cadastrado"});
     },
     //F3
-    change(requeste, response){
+    change(request, response){
         return response.json({});
     }
 }
