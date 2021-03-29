@@ -20,17 +20,17 @@ module.exports = {
         }
 
         //recuperar a se senha do hash e testar
-        bcrypt.compare(password,res.password, (err, result) => {
-            if(result){
-                return response.json({
-                    id: res.id,
-                    name: res.name
+        bcrypt.compare(password,res.password , (err, result) => {
+                if(result){
+                    return response.json({
+                        id: res.id,
+                        name: res.name
+                    });
+                }
+                else{
+                    return response.status(406).json({
+                    error: 'Checar se não cometeu algum erro ao digitar seus dados'
                 });
-            }
-            else{
-                return response.status(406).json({
-                error: 'Checar se não cometeu algum erro ao digitar seus dados'
-            });
             }
         })
     }
