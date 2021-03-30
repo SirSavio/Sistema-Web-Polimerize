@@ -5,7 +5,6 @@ const express = require('express');
 const SessionController = require('./controllers/SessionController');
 const AdminController = require('./controllers/AdminController');
 const SampleController = require('./controllers/SampleController');
-const TrackingController = require('./controllers/TrackingController');
 const ProcessController = require ('./controllers/ProcessController');
 const ValidateCodeController = require('./controllers/ValidateCodeController');
 /*---------------------------------------------------------------------------------*/
@@ -13,6 +12,7 @@ const ValidateCodeController = require('./controllers/ValidateCodeController');
 /*Import metodos de controle do celebrate------------------------------------------*/
 const celebrateMethodsSession = require('./celebrate/celebrateMethodsSession');
 const celebrateMethodsAdmin = require('./celebrate/celebrateMethodsAdmin');
+const celebrateMethodsSample = require('./celebrate/celebrateMethodsSample');
 /*---------------------------------------------------------------------------------*/
 
 const { celebrate } = require('celebrate');
@@ -28,11 +28,9 @@ routes.post('/admin',celebrate(celebrateMethodsAdmin.createAdmin) ,AdminControll
 routes.put('/admin',celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 
 //F5
-routes.post('/sample', SampleController.create);
+routes.post('/sample', celebrate(celebrateMethodsSample.createSample),SampleController.create);
 
 //F9 e F6
-routes.get('/sample/tracking', TrackingController.index);
-routes.put('/sample/tracking', TrackingController.change);
 
 //F7 e F10
 routes.get('/sample/process',ProcessController.index);

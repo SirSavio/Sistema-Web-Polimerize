@@ -5,20 +5,25 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index(request, response){
-
         const id = request.headers.authorization;
-        var senha;
 
-        // recuperar o hash do id logado
         const [res] = await connection('admin')
-            .select('name', 'email', 'password')
+            .select('name', 'email')
             .where('id', id)
         ;
 
-        return response.json({
-            "name": res.name,
-            "email": res.email
-        });
+        if(res){
+            return response.json({
+                "name": res.name,
+                "email": res.email
+            });
+        }
+        else{
+            return response.status(401).json({
+                error: 'Operation not permitted'
+            });
+        }
+        
     },
 
     //F2
@@ -50,7 +55,7 @@ module.exports = {
             });
         }
 
-        return response.json({ "status": "Usuário Cadastrado"});
+        return response.status(201).json({ "status": "Usuário Cadastrado"});
     },
 
     //F3
