@@ -32,8 +32,6 @@ routes.put('/admin',celebrate(celebrateMethodsAdmin.changeAdmin), AdminControlle
 routes.post('/sample', celebrate(celebrateMethodsSample.createSample),SampleController.create);
 routes.put('/sample',celebrate(celebrateMethodsSample.changeSampleId),SampleController.change);
 
-//F9 e F6
-
 //F7
 routes.get('/sample/process',ProcessController.index);
 routes.post('/sample/process',celebrate(celebrateMethodsProcess.createProcess),ProcessController.create);
