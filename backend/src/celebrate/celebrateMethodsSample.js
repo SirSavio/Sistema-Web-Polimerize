@@ -7,3 +7,11 @@ exports.createSample = {
         state: Joi.string().required().max(60)
     })
 }
+
+exports.changeSampleId = {
+    [Segments.BODY]: Joi.object().keys({
+        id: Joi.string().required(),
+        state: Joi.string().required().max(60)
+    })
+
+}

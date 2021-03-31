@@ -30,6 +30,25 @@ module.exports = {
             })
         ;
         
-        return response.status(201).json({ "status": "Amostra Cadastrada"});
+        return response.status(201).json({ 
+            "status": "Amostra Cadastrada",
+            "Código": code
+        });
+    },
+
+    // F6
+    async change(request, response){
+        const {id, state} = request.body;
+
+        await connection('sample')
+            .where('id', id)
+            .update({
+                'state': state
+            })
+        ;
+
+        return response.status(200).json({
+            'status': "Rastreaménto Atualizado" 
+        });
     }
 }

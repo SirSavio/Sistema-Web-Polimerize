@@ -13,6 +13,7 @@ const ValidateCodeController = require('./controllers/ValidateCodeController');
 const celebrateMethodsSession = require('./celebrate/celebrateMethodsSession');
 const celebrateMethodsAdmin = require('./celebrate/celebrateMethodsAdmin');
 const celebrateMethodsSample = require('./celebrate/celebrateMethodsSample');
+const celebrateMethodsProcess = require('./celebrate/celebrateMethodsProcess')
 /*---------------------------------------------------------------------------------*/
 
 const { celebrate } = require('celebrate');
@@ -27,15 +28,16 @@ routes.get('/admin',celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminController
 routes.post('/admin',celebrate(celebrateMethodsAdmin.createAdmin) ,AdminController.create);
 routes.put('/admin',celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 
-//F5
+//F5 e F6
 routes.post('/sample', celebrate(celebrateMethodsSample.createSample),SampleController.create);
+routes.put('/sample',celebrate(celebrateMethodsSample.changeSampleId),SampleController.change);
 
 //F9 e F6
 
-//F7 e F10
+//F7
 routes.get('/sample/process',ProcessController.index);
-routes.post('/sample/process',ProcessController.create);
-routes.put('/sample/process',ProcessController.change);
+routes.post('/sample/process',celebrate(celebrateMethodsProcess.createProcess),ProcessController.create);
+routes.put('/sample/process',celebrate(celebrateMethodsProcess.changeChange),ProcessController.change);
 
 //F8
 routes.get('./validate', ValidateCodeController.index);
