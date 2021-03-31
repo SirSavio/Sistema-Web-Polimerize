@@ -6,8 +6,8 @@ module.exports = {
     client: 'mysql2',
     connection: {
       host : 'localhost',
-      user : 'root',
-      password : '',
+      user : 'paiva',
+      password : '21211345',
       //O banco "polimerize" deve existir no MySQL.
       database : 'polimerize'
     },
