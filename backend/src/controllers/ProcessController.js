@@ -1,6 +1,6 @@
 const connection = require('../database/connection');
 
-const data = new Date();
+// const data = new Date();
 
 module.exports = {
     async index(request, response){

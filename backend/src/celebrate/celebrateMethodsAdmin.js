@@ -1,5 +1,4 @@
-const express = require('express');
-const { celebrate, Segments, Joi } = require("celebrate");
+const { Segments, Joi } = require("celebrate");
 
 exports.indexAdmin = {
     [Segments.HEADERS]: Joi.object({

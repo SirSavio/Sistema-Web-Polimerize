@@ -1,5 +1,4 @@
-const express = require('express');
-const { celebrate, Segments, Joi } = require("celebrate");
+const { Segments, Joi } = require("celebrate");
 
 exports.createSession = {
     [Segments.BODY]: Joi.object().keys({

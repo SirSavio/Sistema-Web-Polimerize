@@ -1,4 +1,4 @@
-const { celebrate, Segments, Joi } = require("celebrate");
+const { Segments, Joi } = require("celebrate");
 
 exports.createSample = {
     [Segments.BODY]: Joi.object().keys({
