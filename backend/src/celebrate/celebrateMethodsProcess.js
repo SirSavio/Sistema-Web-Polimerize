@@ -1,4 +1,11 @@
-const { celebrate, Segments, Joi } = require("celebrate");
+const express = require('express');
+const { celebrate, Segments, Joi } = require("celebrate");  
+
+exports.IndexProcess = {
+    [Segments.BODY]: Joi.object().keys({
+        id_sample: Joi.string().required().min(10)
+    })
+}
 
 exports.createProcess = {
     [Segments.BODY]: Joi.object().keys({

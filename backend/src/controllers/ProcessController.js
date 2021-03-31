@@ -3,8 +3,16 @@ const connection = require('../database/connection');
 const data = new Date();
 
 module.exports = {
-    index(request, response){
-        return response.json({});
+    async index(request, response){
+        const {id_sample} = request.body;
+        console.log(id_sample);
+
+        const res = await connection('process')
+            .select('id','name','describe')
+            .where('id_sample',id_sample)
+        ;
+
+        return response.json(res);
     },
     async create(request, response){
         const {name, describe, id_sample} = request.body;

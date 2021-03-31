@@ -1,6 +1,19 @@
-module.exports = {
+const connection = require('../database/connection');
+module.exports ={ 
     //F8
-    index(request, response){
-        return response.json({});
+    async index(request, response){
+        const {code} = request.body;
+
+        const resultCode = await connection('sample')
+            .select('code')
+            .where('code',code)
+            .first()
+        ;
+        if(resultCode){
+            return response.status(200).json(resultCode);
+        }
+        else{
+            return response.status(400).json({});
+        }
     }
 }
