@@ -39,7 +39,6 @@ routes.post('/sample/process',celebrate(celebrateMethodsProcess.createProcess),P
 routes.put('/sample/process',celebrate(celebrateMethodsProcess.changeChange),ProcessController.change);
 
 //F8
-//bug em celebrate, get -> verificar o body
-routes.get('/validate',celebrate(celebrateMethodsValidateCode.indexValidateCode) ,ValidateCodeController.index);
+routes.get('/validate/:code',celebrate(celebrateMethodsValidateCode.indexValidateCode) ,ValidateCodeController.index);
 
 module.exports = routes;
