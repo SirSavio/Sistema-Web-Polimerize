@@ -2,7 +2,7 @@ const connection = require('../database/connection');
 module.exports ={ 
     //F8
     async index(request, response){
-        const {code} = request.body;
+        const {code} = request.params;
 
         const resultCode = await connection('sample')
             .select('code')

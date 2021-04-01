@@ -1,5 +1,7 @@
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import PrivateRouter, {} from './PrivateRoutes';
+
 import LoginAdmin from './pages/LoginAdmin';
 import RedirectUser from './pages/RedirectUser';
 import ValidateCode from './pages/ValidateCode';
@@ -13,7 +15,7 @@ export default function Routes(){
                 <Route path='/' exact component={RedirectUser}/>
                 <Route path='/login' component={LoginAdmin}/>
                 <Route path='/sample/validate' component={ValidateCode}/>
-                <Route path='/admin/dashboard' component={DashboardAdmin}/>
+                <PrivateRouter path='/admin/dashboard' component={DashboardAdmin}/>
                 <Route path='/user/dashboard' component={DashboardUser}/>
             </Switch>
         </BrowserRouter>
