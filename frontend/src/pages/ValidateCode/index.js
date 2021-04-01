@@ -1,0 +1,43 @@
+import React,{useState} from 'react';
+import {useHistory} from 'react-router-dom';
+import api from '../../services/api';
+
+export default function ValidateCode(){
+    /*-----------------------------------------------------*/
+    //variáveis
+    const [code, setCode] = useState('');
+    const history = useHistory();
+
+    /*-----------------------------------------------------*/
+    //funções
+    async function Validate(e){
+        e.preventDefault();
+        
+        try{
+            const res = await api.get(`validate/${code}`);
+            localStorage.removeItem('codeSample');
+            localStorage.setItem('codeSample', code);
+            history.push('/user/dashboard');
+        }
+        catch(error){
+            alert('Não existe uma amostra com esse código')
+        }
+        
+    }
+
+    /*-----------------------------------------------------*/
+    return(
+        <div>
+            <form onSubmit={Validate}>
+                <input 
+                    type="text" 
+                    required
+                    placeholder={'Digite o código da amostra'}
+                    value={code}
+                    onChange={e => setCode(e.target.value)}
+                />
+                <button type='submit'>Verificar</button>
+            </form>
+        </div>
+    );
+}
