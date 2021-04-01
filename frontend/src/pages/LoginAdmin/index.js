@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 export default function LoginAdmin(){
     /*-----------------------------------------------------*/
+    //variáveis
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const history = useHistory();
@@ -11,6 +12,7 @@ export default function LoginAdmin(){
     
     
     /*-----------------------------------------------------*/
+    //controle
     if(nameAdmin ){
         return(
             <div>
@@ -25,6 +27,7 @@ export default function LoginAdmin(){
     }
 
     /*-----------------------------------------------------*/
+    //funções
     async function Logout(){
         localStorage.removeItem('adminPolimerizeId');
         localStorage.removeItem('adminPolimerizeName');
@@ -49,7 +52,6 @@ export default function LoginAdmin(){
     }
 
     /*-----------------------------------------------------*/
-
     return(
         <div>
             <form onSubmit={Login} >
