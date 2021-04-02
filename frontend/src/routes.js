@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import PrivateRouter, {} from './PrivateRoutes';
+import PrivateRouter from './PrivateRoutes';
 
 import LoginAdmin from './pages/LoginAdmin';
 import RedirectUser from './pages/RedirectUser';

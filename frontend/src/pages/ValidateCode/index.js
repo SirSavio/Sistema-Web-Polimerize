@@ -14,7 +14,7 @@ export default function ValidateCode(){
         e.preventDefault();
         
         try{
-            const res = await api.get(`validate/${code}`);
+            await api.get(`validate/${code}`);
             localStorage.removeItem('codeSample');
             localStorage.setItem('codeSample', code);
             history.push('/user/dashboard');
