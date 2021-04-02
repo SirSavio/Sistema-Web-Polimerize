@@ -45,7 +45,7 @@ module.exports = {
         
         return response.status(201).json({ 
             "status": "Amostra Cadastrada",
-            "Código": code
+            "code": code
         });
     },
 
