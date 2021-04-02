@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import api from '../../services/api';
-import {useHistory} from 'react-router-dom';
 
 export default function DashboardUser(){
     /*-----------------------------------------------------*/
     //variáveis
-    const history = useHistory();
     const [sample, setAmostra] = useState([]);
     const [process, setProcess] = useState([]);
     const code = localStorage.getItem('codeSample');
