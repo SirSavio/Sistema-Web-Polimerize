@@ -4,8 +4,7 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index(request, response){
-        const {id_sample} = request.body;
-        console.log(id_sample);
+        const {id_sample} = request.params;
 
         const res = await connection('process')
             .select('id','name','describe')

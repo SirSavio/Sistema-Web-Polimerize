@@ -4,6 +4,19 @@ const connection = require('../database/connection');
 const data = new Date();
 
 module.exports = {
+    //F9
+    async index(request, response){
+        const {code} = request.params;
+
+        const [res] = await connection('sample')
+            .select('*')
+            .where('code',code)
+        ;
+
+        return response.json(res);
+
+    },
+
     //F5
     async create(request, response){
         //variávei verificadas com o celebrate

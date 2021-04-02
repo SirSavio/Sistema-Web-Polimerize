@@ -1,8 +1,8 @@
 const { Segments, Joi } = require("celebrate");  
 
 exports.IndexProcess = {
-    [Segments.BODY]: Joi.object().keys({
-        id_sample: Joi.string().required().min(10)
+    [Segments.PARAMS]: Joi.object().keys({
+        id_sample: Joi.string().required()
     })
 }
 
