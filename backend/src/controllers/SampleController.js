@@ -21,6 +21,7 @@ module.exports = {
     async create(request, response){
         //variávei verificadas com o celebrate
         const {patientName, description, state} = request.body;
+        console.log(patientName, description, state);
         const date = data.getFullYear() + '-' + (data.getMonth()+1) + '-' + (data.getDate()+1);
         var code = crypto.randomBytes(4).toString('HEX')
 
