@@ -6,6 +6,12 @@ exports.IndexSample = {
 	})
 }
 
+exports.indexPages = {
+    [Segments.QUERY]: Joi.object().keys({
+        page: Joi.number()
+    })
+}
+
 exports.createSample = {
     [Segments.BODY]: Joi.object().keys({
         patientName: Joi.string().required().max(60),

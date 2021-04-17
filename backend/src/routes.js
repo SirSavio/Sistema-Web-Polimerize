@@ -28,7 +28,9 @@ routes.get('/admin', celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminControlle
 routes.post('/admin', celebrate(celebrateMethodsAdmin.createAdmin) ,AdminController.create);
 routes.put('/admin', celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 
-//F5 e F6
+//F5 F6
+routes.get('/sample/count',SampleController.indexCount)
+routes.get('/sample', celebrate(celebrateMethodsSample.indexPages),SampleController.indexPages);
 routes.get('/sample/:code', celebrate(celebrateMethodsSample.IndexSample), SampleController.index)
 routes.post('/sample', celebrate(celebrateMethodsSample.createSample),SampleController.create);
 routes.put('/sample', celebrate(celebrateMethodsSample.changeSampleId),SampleController.change);
