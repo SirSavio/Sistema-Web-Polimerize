@@ -4,6 +4,7 @@ const connection = require('../database/connection');
 const data = new Date();
 
 module.exports = {
+
     //F9
     async index(request, response){
         const {code} = request.params;
@@ -15,6 +16,29 @@ module.exports = {
 
         return response.json(res);
 
+    },
+
+    async indexCount(request, response){
+        const [count] = await connection('sample').count();
+        return response.json(count['count(*)']);
+    },
+
+    //F6
+    async indexPages(request, response){
+        const {page = 1} = request.query;
+
+
+        const [count] = await connection('sample').count();
+
+        const res = await connection('sample')
+            .limit(5)
+            .offset((page-1)*5)
+            .select('*')
+        ;
+
+        response.header('X-Total-Count', count['count(*)']);
+
+        return response.json(res);
     },
 
     //F5
