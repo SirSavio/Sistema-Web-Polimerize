@@ -13,7 +13,7 @@ export default function LoginAdmin(){
     
     /*-----------------------------------------------------*/
     //controle
-    if(nameAdmin ){
+    if(nameAdmin){
         return(
             <div>
                 <strong>

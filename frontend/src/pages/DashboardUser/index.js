@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 export default function DashboardUser(){
@@ -7,7 +8,7 @@ export default function DashboardUser(){
     const [sample, setAmostra] = useState([]);
     const [process, setProcess] = useState([]);
     const code = localStorage.getItem('codeSample');
-
+    const history = useHistory();
     
     /*-----------------------------------------------------*/
     //funções
@@ -28,6 +29,9 @@ export default function DashboardUser(){
     /*-----------------------------------------------------*/
     return(
         <div>
+            <div>
+                <button type={'button'} onClick={() => {history.push('/sample/validate');}} > Nova consulta </button>
+            </div>
             <div>
                 <h1>Rastreamento</h1>
                 <span>A amostra se encontra em: {sample.state}</span>
