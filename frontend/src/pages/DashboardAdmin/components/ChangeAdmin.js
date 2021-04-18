@@ -20,14 +20,14 @@ export default function ChangeAdmin(){
         const dat = {id, name, email, password, passwordConfirmation}
         
         try{
-                await api.put('admin', dat);
-                (adimChange)? setAdimChange(false):setAdimChange(true);
-                alert('Dados do administrador Alterado');
-            }
-            catch(erro){
-                (adimChange)? setAdimChange(false):setAdimChange(true);
-                alert('Não foi possível Alterar os Dados do administrador, confira sua senha');
-            }
+            await api.put('admin', dat);
+            (adimChange)? setAdimChange(false):setAdimChange(true);
+            alert('Dados do administrador Alterado');
+        }
+        catch(erro){
+            (adimChange)? setAdimChange(false):setAdimChange(true);
+            alert('Não foi possível Alterar os Dados do administrador, confira sua senha');
+        }
     }
             
     useEffect( () => {

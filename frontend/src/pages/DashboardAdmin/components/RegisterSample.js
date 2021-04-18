@@ -7,8 +7,7 @@ export default function RegisterSample(){
     const [patientName, setPatientName] = useState('');
     const [description, setDescription] = useState('');
     const [state, setState] = useState('análise');
-
-
+    
     /*-----------------------------------------------------*/
     //funções
     async function registerSample(e){
