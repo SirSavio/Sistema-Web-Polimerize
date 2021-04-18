@@ -20,10 +20,25 @@ module.exports = {
         }
         else{
             return response.status(401).json({
-                error: 'Operation not permitted'
+                "error": 'Operation not permitted'
             });
         }
         
+    },
+
+    async indexAllAdmin(request, response){
+        const res = await connection('admin')
+            .select('id','name','email')
+        ;
+
+        if(res){
+            return response.json(res);
+        }
+        else{
+            return response.status(401).json({
+                "error": "Operation not permitted"
+            })
+        }
     },
 
     //F2
@@ -82,8 +97,7 @@ module.exports = {
             
         */
         //celebrate esta garantindo que, se chegou até aqui, essas variáveis existem e são válidas
-        const {name, email, passwordConfirmation} = request.body;
-        const id = request.headers.authorization;
+        const {id, name, email, passwordConfirmation} = request.body;
         var {password} = request.body;
 
         // recuperar o hash do id logado

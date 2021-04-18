@@ -25,6 +25,7 @@ routes.post('/session',celebrate(celebrateMethodsSession.createSession) ,Session
 
 //F2 e F3
 routes.get('/admin', celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminController.index);
+routes.get('/admin/allAdmin',AdminController.indexAllAdmin);
 routes.post('/admin', celebrate(celebrateMethodsAdmin.createAdmin) ,AdminController.create);
 routes.put('/admin', celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 

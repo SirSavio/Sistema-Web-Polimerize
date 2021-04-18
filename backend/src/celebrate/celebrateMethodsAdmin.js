@@ -22,10 +22,8 @@ exports.createAdmin = {
 }
 
 exports.changeAdmin = {
-    [Segments.HEADERS]: Joi.object({
-        authorization: Joi.string().required()
-    }).unknown(),
     [Segments.BODY]: Joi.object().keys({
+        id: Joi.string().required().max(60),
         name: Joi.string().required().max(60),
         email: Joi.string().required().email().max(60),
         //Mínimo de oito caracteres, pelo menos uma letra e um número:
