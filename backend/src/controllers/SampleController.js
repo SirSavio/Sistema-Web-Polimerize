@@ -26,8 +26,6 @@ module.exports = {
     //F6
     async indexPages(request, response){
         const {page = 1} = request.query;
-
-
         const [count] = await connection('sample').count();
 
         const res = await connection('sample')
@@ -35,8 +33,6 @@ module.exports = {
             .offset((page-1)*5)
             .select('*')
         ;
-
-        response.header('X-Total-Count', count['count(*)']);
 
         return response.json(res);
     },

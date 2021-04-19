@@ -4,21 +4,26 @@ import api from '../../../services/api';
 export default function ManageSample(){
     const [sample, setSample] = useState([]);
     const [page, setPage] = useState(1);
-    const [nPage, setNumPages] = useState(1)
+    const [numPages, setNumPages] = useState(1)
     const [change, setChange] = useState(false);
 
+    useEffect(() => {
+        api.get('sample/count')
+            .then(response => {
+                setNumPages(Math.ceil(response.data / 5));
+            })
+        ;
+    },[]);
+    
     useEffect(() => {
         api.get(`sample/?page=${page}`)
             .then(response => {
                 setSample(response.data);
-                setNumPages(response.headers["X-Total-Count"]);
-                console.log(localStorage.headers);
             })
             .catch(erro => {
                 alert(erro);
             })
         ;
-        // console.log(nPage);
     },[page,change]);
 
     async function putState(e){
@@ -77,9 +82,23 @@ export default function ManageSample(){
                     </div>
                 ))}
                 <dir>
-                    <label htmlFor="">Páginas: </label>
-                    <button>Anterior</button>
-                    <button>Próxima</button>
+                    <label htmlFor="">Página {page}/{numPages} </label>
+                    <button 
+                        type={'button'}
+                        onClick={() => {
+                            if(page > 1){
+                                setPage(page-1);
+                            }
+                        }}
+                    > Anterior</button>
+                    <button 
+                        type={'button'}
+                        onClick={() => {
+                            if(page < numPages){
+                                setPage(page+1);
+                            }
+                        }}
+                    >Próxima</button>
                 </dir>
             </div> 
         </div>
