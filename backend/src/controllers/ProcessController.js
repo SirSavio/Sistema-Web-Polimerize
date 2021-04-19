@@ -7,7 +7,7 @@ module.exports = {
         const {id_sample} = request.params; 
 
         const res = await connection('process')
-            .select('id','name','describe', "id_sample")
+            .select('id','name','describe', "date" ,"id_sample")
             .where('id_sample',id_sample)
         ;
 

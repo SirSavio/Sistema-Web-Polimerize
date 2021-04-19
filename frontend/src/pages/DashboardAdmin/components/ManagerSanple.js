@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import api from '../../../services/api';
+import Process from './Process';
 
 export default function ManageSample(){
     const [sample, setSample] = useState([]);
@@ -49,6 +50,8 @@ export default function ManageSample(){
             <div>
                 {sample.map((sam) => (
                     <div key={sam.id}>
+                        <strong htmlFor="">Amostra</strong>
+                        <br/>
                         <label htmlFor="">Codigo: </label>
                         <span> {sam.code} </span>
                         <br/>
@@ -74,10 +77,11 @@ export default function ManageSample(){
                             />
                             <button type={'submit'}>Atualizar</button>
                         </form>
-                        <br/>
-
+                        <strong>Processos Realizados</strong>
                         {/* método dos processos */}
-
+                        <Process id={sam.id}></Process>
+                        <br/>
+                        <br/>
 
                     </div>
                 ))}
