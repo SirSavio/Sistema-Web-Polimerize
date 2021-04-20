@@ -11,7 +11,7 @@ export default function Process({id}){
                 setProcess(responce.data);
             })
         ;
-    },[id,setProcess])
+    },[id,setProcess,processChange])
 
     async function change(e){
         e.preventDefault();
@@ -33,6 +33,29 @@ export default function Process({id}){
         }
     }
 
+    async function postProcess(e){
+    	e.preventDefault();
+
+    	const name = e.target.name.value;
+    	const describe = e.target.describe.value;
+    	const id_sample = id;
+
+    	e.target.name.value = '';
+    	e.target.describe.value = '';
+
+    	const dat = {name,describe,id_sample};
+
+    	try{
+    		await api.post('sample/process', dat);
+    		(processChange)? setProcessChange(false): setProcessChange(true);
+            alert("Processo adicionado");
+    	}
+    	catch(error){
+            (processChange)? setProcessChange(false): setProcessChange(true);
+            alert("Erro ao adicionar processo");
+        }
+    }
+
     return (
         <div>
             {process.map((pro) => (
@@ -44,7 +67,6 @@ export default function Process({id}){
                             required
                             defaultValue={pro.id}
                         />
-                        <br/>
                         <input 
                             type="text"
                             name={"name"}
@@ -52,7 +74,6 @@ export default function Process({id}){
                             required
                             defaultValue={pro.name}
                         />
-                        <br/>
                         <textarea
                             type="text"
                             name={"describe"}
@@ -60,13 +81,28 @@ export default function Process({id}){
                             required
                             defaultValue={pro.describe}
                         />
-                        <br/>
                         <span>{ D.toISOString(pro.date) }</span>
-                        <br/>
                         <button type={'submit'}>Salvar</button>
                     </form>
                 </div>
             ))}
+
+            <strong>Adicionar novo processo </strong>
+            <form onSubmit={postProcess}>
+            	<input
+            		type="text"
+            		name={"name"}
+            		required
+            		placeholder={"Nome do processo"}
+            	/>
+            	<textarea
+            		type="text"
+            		name={"describe"}
+            		required
+            		placeholder={"Descrição do processo"}
+            	/>
+            	<button type={'submit'}>Adicionar</button>
+            </form>
         </div>
     )
 }
