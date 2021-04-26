@@ -47,64 +47,63 @@ export default function ManageSample(){
 
     return(
         <div>
-            <div>
+            <div className="card-group ">
                 {sample.map((sam) => (
-                    <div key={sam.id}>
-                        <strong htmlFor="">Amostra</strong>
-                        <br/>
-                        <label htmlFor="">Codigo: </label>
-                        <span> {sam.code} </span>
-                        <br/>
-                        <label htmlFor="">Nome do Paciênte: </label>
-                        <span> {sam.patientName} </span>
-                        <br/>
-                        <label htmlFor="">Descrição: </label>
-                        <span> {sam.description} </span>
-                        <br/>
-                        <form onSubmit={putState}>
-                            <label htmlFor="">Estado: </label>
-                            <input 
-                                type="hidden"
-                                name={"id"}
-                                required
-                                defaultValue={sam.id}
-                            />
-                            <input 
-                                type="text"
-                                name="state"
-                                required
-                                defaultValue={sam.state}
-                            />
-                            <button type={'submit'}>Atualizar</button>
-                        </form>
-                        <strong>Processos Realizados</strong>
-                        {/* método dos processos */}
-                        <Process id={sam.id}></Process>
-                        <br/>
-                        <br/>
+                    <div align="center" className="card" key={sam.id}>
+                        <div className="card-body">
+                            <h5 className="card-title" htmlFor="">Codigo: {sam.code}</h5>
 
+                            <p className="card-text"> {sam.patientName} </p>
+
+                            <p className="card-text"> {sam.description} </p>
+                            
+                            <form onSubmit={putState}>
+                                <h5 className="card-title">Estado: </h5>                   
+                                <input 
+                                    type="hidden"
+                                    name={"id"}
+                                    required
+                                    defaultValue={sam.id}
+                                />
+                                <input
+                                    className="form-control" 
+                                    type="text"
+                                    name="state"
+                                    required
+                                    defaultValue={sam.state}
+                                />
+                                <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Atualizar</button>
+                            </form>
+                            
+                            {/* método dos processos */}
+                            <Process id={sam.id}></Process>
+                            <br/>
+
+                        </div>
                     </div>
                 ))}
-                <dir>
-                    <label htmlFor="">Página {page}/{numPages} </label>
-                    <button 
-                        type={'button'}
-                        onClick={() => {
-                            if(page > 1){
-                                setPage(page-1);
-                            }
-                        }}
-                    > Anterior</button>
-                    <button 
-                        type={'button'}
-                        onClick={() => {
-                            if(page < numPages){
-                                setPage(page+1);
-                            }
-                        }}
-                    >Próxima</button>
-                </dir>
-            </div> 
+            </div>
+            <dir>
+                <button
+                    className="btn btn-primary mr-4"
+                    type={'button'}
+                    onClick={() => {
+                        if(page > 1){
+                            setPage(page-1);
+                        }
+                    }}
+                > Anterior</button>
+                <label htmlFor="">Página {page}/{numPages} </label>
+                <button 
+                    className="btn btn-primary ml-4"
+                    type={'button'}
+                    onClick={() => {
+                        if(page < numPages){
+                            setPage(page+1);
+                        }
+                    }}
+                >Próxima</button>
+            </dir>/
         </div>
     )
 }

@@ -58,16 +58,18 @@ export default function Process({id}){
 
     return (
         <div>
+            <h5 className="card-title">Processos Realizados : </h5>
             {process.map((pro) => (
-                <div key={pro.id}>
+                <div className="card mb-2 bg-light" key={pro.id}>
                     <form onSubmit={change}>
-                        <input 
+                        <input
                             type="hidden"
                             name={"id"}
                             required
                             defaultValue={pro.id}
                         />
-                        <input 
+                        <input
+                            className="form-control"
                             type="text"
                             name={"name"}
                             placeholder={pro.name}
@@ -75,34 +77,39 @@ export default function Process({id}){
                             defaultValue={pro.name}
                         />
                         <textarea
+                            className="form-control"
                             type="text"
                             name={"describe"}
                             placeholder={pro.describe}
                             required
                             defaultValue={pro.describe}
                         />
-                        <span>{ D.toISOString(pro.date) }</span>
-                        <button type={'submit'}>Salvar</button>
+                        <span className="card-text" >{ D.toISOString(pro.date) }</span>
+                        <button className="btn border-secondary mb-2" type={'submit'}>Salvar</button>
                     </form>
                 </div>
             ))}
 
-            <strong>Adicionar novo processo </strong>
-            <form onSubmit={postProcess}>
-            	<input
-            		type="text"
-            		name={"name"}
-            		required
-            		placeholder={"Nome do processo"}
-            	/>
-            	<textarea
-            		type="text"
-            		name={"describe"}
-            		required
-            		placeholder={"Descrição do processo"}
-            	/>
-            	<button type={'submit'}>Adicionar</button>
-            </form>
+            <div>
+                <h5 className="card-title mt-4">Adicionar novo processo </h5>
+                <form onSubmit={postProcess}>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name={"name"}
+                        required
+                        placeholder={"Nome do processo"}
+                    />
+                    <textarea
+                        className="form-control"
+                        type="text"
+                        name={"describe"}
+                        required
+                        placeholder={"Descrição do processo"}
+                    />
+                    <button className="btn" type={'submit'}>Adicionar</button>
+                </form>
+            </div>
         </div>
     )
 }

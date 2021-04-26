@@ -44,7 +44,7 @@ export default function LoginAdmin(){
                 localStorage.setItem('adminPolimerizeId', res.data.id);
                 localStorage.setItem('adminPolimerizeName', res.data.name);
 
-                history.push('/')
+                history.push('/admin/dashboard')
             }
             catch(err){
                 alert('Checar se não cometeu algum erro ao digitar seus dados');
