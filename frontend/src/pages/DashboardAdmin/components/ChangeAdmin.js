@@ -20,11 +20,15 @@ export default function ChangeAdmin(){
         const dat = {id, name, email, password, passwordConfirmation}
         
         try{
-            await api.put('admin', dat);
+            await api.put('admin', dat)
+                .catch(error => {
+                    throw(error)
+                })
+            ;
             (adimChange)? setAdimChange(false):setAdimChange(true);
             alert('Dados do administrador Alterado');
         }
-        catch(erro){
+        catch(error){
             (adimChange)? setAdimChange(false):setAdimChange(true);
             alert('Não foi possível Alterar os Dados do administrador, confira sua senha');
         }
@@ -34,6 +38,9 @@ export default function ChangeAdmin(){
         api.get('/admin/allAdmin')
         .then(response => {
             setData(response.data);
+        })
+        .catch(error => {
+            alert(error);
         })
     },[adimChange]);
 

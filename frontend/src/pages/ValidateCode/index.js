@@ -14,13 +14,16 @@ export default function ValidateCode(){
         e.preventDefault();
         
         try{
-            await api.get(`validate/${code}`);
+            await api.get(`validate/${code}`)
+                .catch(error => {
+                    throw(error);
+                });
             localStorage.removeItem('codeSample');
             localStorage.setItem('codeSample', code);
             history.push('/user/dashboard');
         }
         catch(error){
-            alert('Não existe uma amostra com esse código')
+            alert('Não existe uma amostra com esse código');
         }
         
     }

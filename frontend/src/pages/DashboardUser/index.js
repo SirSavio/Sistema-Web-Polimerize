@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory, Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import moment from 'moment';
 

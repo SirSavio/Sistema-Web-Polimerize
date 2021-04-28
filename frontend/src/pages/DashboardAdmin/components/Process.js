@@ -46,7 +46,11 @@ export default function Process({id}){
     	const dat = {name,describe,id_sample};
 
     	try{
-    		await api.post('sample/process', dat);
+    		await api.post('sample/process', dat)
+                .catch(error => {
+                    throw(error);
+                })
+            ;
     		(processChange)? setProcessChange(false): setProcessChange(true);
             alert("Processo adicionado");
     	}

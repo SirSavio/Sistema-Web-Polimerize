@@ -12,7 +12,10 @@ export default function RegisterAdmin(){
         const data = {name, email, password}
 
         try{
-            await api.post('admin',data);
+            await api.post('admin',data)
+            .catch(erro => {
+                throw(erro);
+            });
             setName('');
             setEmail('');
             setPassword('');
@@ -22,7 +25,8 @@ export default function RegisterAdmin(){
             setName('');
             setEmail('');
             setPassword('');
-            alert('Não foi possível cadastrar o Adminstrador ' + erro);
+            alert(  'Não foi possível cadastrar o Adminstrador\n' + 
+                    'Checar se a senha tem  tem no mínimo 8 digitos com uma letra e um número');
         }
     }
 

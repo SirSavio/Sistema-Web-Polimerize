@@ -13,6 +13,9 @@ export default function ManageSample(){
             .then(response => {
                 setNumPages(Math.ceil(response.data / 5));
             })
+            .catch(error => {
+                alert(error);
+            })
         ;
     },[]);
     
@@ -35,11 +38,15 @@ export default function ManageSample(){
         const data = {id, state};
 
         try{
-            await api.put('sample',data);
+            await api.put('sample',data)
+                .catch(error => {
+                    throw(error);
+                })
+            ;
             (change)? setChange(false): setChange(true);
             alert("Estado Alterado");
         }
-        catch(erro){
+        catch(error){
             (change)? setChange(false): setChange(true);
             alert("Erro ao alterar o estado da amostra");
         }

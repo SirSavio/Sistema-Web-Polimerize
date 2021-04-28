@@ -41,13 +41,16 @@ export default function LoginAdmin(){
 
             try{
                 const res = await api.post('session', data)
+                    .catch(error => {
+                        throw(error);
+                    });
                 localStorage.setItem('adminPolimerizeId', res.data.id);
                 localStorage.setItem('adminPolimerizeName', res.data.name);
 
                 history.push('/admin/dashboard')
             }
-            catch(err){
-                alert('Checar se não cometeu algum erro ao digitar seus dados');
+            catch(error){
+                alert('Checar se não cometeu algum erro ao digitar seus dados\n');
             }
     }
 

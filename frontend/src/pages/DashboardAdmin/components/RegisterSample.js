@@ -16,14 +16,18 @@ export default function RegisterSample(){
         const data = {patientName, description, state};
         
         try{
-            const res = await api.post('sample', data);
+            const res = await api.post('sample', data)
+                .catch(error => {
+                    throw(error);
+                })
+            ;
             setPatientName('');
             setDescription('');
             setState('análise');
             alert('Amostra de código: [' + res.data.code + '] foi cadastrada');
         }
-        catch(erro){
-            alert('Não foi possível cadastrar uma amostra, erro:' + erro);
+        catch(error){
+            alert('Não foi possível cadastrar uma amostra, erro:' + error);
             setPatientName('');
             setDescription('');
             setState('análise');
