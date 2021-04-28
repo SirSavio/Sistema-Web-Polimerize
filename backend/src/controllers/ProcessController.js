@@ -7,20 +7,22 @@ module.exports = {
         const {id_sample} = request.params; 
 
         const res = await connection('process')
-            .select('id','name','describe', "date" ,"id_sample")
+            .select('id','name','describe', 'admin_name', "date" ,"id_sample")
+            .orderBy('date')
             .where('id_sample',id_sample)
         ;
 
         return response.json(res);
     },
     async create(request, response){
-        const {name, describe, id_sample} = request.body;
-        const date = data.getFullYear() + '-' + (data.getMonth()+1) + '-' + (data.getDate()+1);
+        const date = new Date();
+        const {name, describe,admin_name, id_sample} = request.body;
 
         const res = await connection('process')
             .insert({
                 name: name,
                 describe: describe,
+                admin_name: admin_name,
                 date: date,
                 id_sample: id_sample
             })
@@ -34,13 +36,16 @@ module.exports = {
         }
     },
     async change(request, response){
-        const {id, name, describe} = request.body;
+        const date = new Date();
+        const {id, name, admin_name, describe} = request.body;
 
         const a = await connection('process')
             .where('id',id)
             .update({
                 name,
-                describe
+                describe,
+                admin_name,
+                date
             })
         ;
 
