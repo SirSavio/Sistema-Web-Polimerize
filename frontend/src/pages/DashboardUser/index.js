@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import api from '../../services/api';
+import moment from 'moment';
 
 export default function DashboardUser(){
     /*-----------------------------------------------------*/
@@ -33,24 +34,28 @@ export default function DashboardUser(){
                 <button type={'button'} onClick={() => {history.push('/sample/validate');}} > Nova consulta </button>
             </div>
             <div>
-                <h1>Rastreamento</h1>
+                <h1>Status da Amostra</h1>
                 <span>A amostra se encontra em: {sample.state}</span>
             </div>
+            {sample.documentation && (<a href={sample.documentation} > Relatório </a>)}
             <div>
                 <h1>Dados da amostra</h1>
-                <span>Nome do Paciente: {sample.patientName}</span>
+                <span>Nome do Cliente: {sample.patientName}</span>
                 <br/>
                 <span>Descrição: {sample.description}</span>
                 <br/>
-                <span>Data da Amostra: {sample.date}</span>
+                <span>Data da Amostra: {moment(sample.date).format('DD/MM/YYYY HH:mm:ss')}</span>
             </div>
             <div>
                 <h1>Dados dos processos</h1>
                 {process.map(process => (
                     <li key={process.id}>
-                        <strong>Processo realizado: {process.name}</strong>
-                        <br/>
-                        <p>Descrição: {process.describe}</p>
+                        <div>
+                            <strong>Processo realizado: {process.name}</strong>
+                            <br/>
+                            <p>Descrição: {process.describe}</p>
+                            <p>Data: { moment(process.date).format('DD/MM/YYYY HH:mm:ss')}</p>
+                        </div>
                     </li>
                 ))}
             </div>

@@ -11,11 +11,11 @@ exports.indexPages = {
         page: Joi.number()
     })
 }
-
 exports.createSample = {
     [Segments.BODY]: Joi.object().keys({
         patientName: Joi.string().required().max(60),
         description: Joi.string().required().max(500),
+        documentation: Joi.string().allow(null, '').max(500),
         state: Joi.string().required().max(60)
     })
 }

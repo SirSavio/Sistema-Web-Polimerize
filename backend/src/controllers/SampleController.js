@@ -1,8 +1,6 @@
 const crypto = require('crypto');
 const connection = require('../database/connection');
 
-const data = new Date();
-
 module.exports = {
 
     //F9
@@ -27,6 +25,7 @@ module.exports = {
     async indexPages(request, response){
         const {page = 1} = request.query;
         const [count] = await connection('sample').count();
+        // const formattedDate = fns.format(date,"dd/MM/yyyy HH:mm:SS");
 
         const res = await connection('sample')
             .limit(5)
@@ -39,16 +38,16 @@ module.exports = {
 
     //F5
     async create(request, response){
-        //variávei verificadas com o celebrate
+        const date = new Date();
         const {patientName, description, state} = request.body;
-        const date = data.getFullYear() + '-' + (data.getMonth()+1) + '-' + (data.getDate()+1);
-        var code = crypto.randomBytes(4).toString('HEX')
+        var code = crypto.randomBytes(4).toString('HEX');
 
         const id_sample = await connection('sample')
             .insert({
                 code,
                 patientName,
                 description,
+                'documentation': '',
                 state,
                 date
             })

@@ -5,7 +5,8 @@ exports.up = function(knex) {
         table.string('patientName',60).notNullable();
         table.string('description', 500).notNullable();
         table.string('state', 500).notNullable();
-        table.date('date').notNullable();
+        table.string('documentation', 500).notNullable();
+        table.datetime('date').notNullable();
     })
 };
 

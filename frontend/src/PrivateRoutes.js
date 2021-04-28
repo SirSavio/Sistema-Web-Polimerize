@@ -7,10 +7,11 @@ export default function PrivateRouter({component: Component, ...res}){
         <Route
             {...res}
             render = {
-                props => authenticate() ? (<Component {...props}/>) :   (
-                                                                            alert("Faça login para acessar esse conteudo"), 
-                                                                            <Redirect to={{pathname: "/", state:{from: props.location}}}/>
-                                                                        )
+                props => authenticate() 
+                    ? (<Component {...props}/>) 
+                    :   (alert("Faça login para acessar esse conteudo"), 
+                         <Redirect to={{pathname: "/", state:{from: props.location}}}/>
+                        )
             }
         />
     );

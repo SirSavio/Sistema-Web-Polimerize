@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 
 import RegisterSample from './components/RegisterSample';
-import ManageSample from './components/ManagerSanple';
+import ManageSample from './components/ManagerSample';
 import RegisterAdmin from './components/RegisterAdmin';
 import ChangeAdmin from './components/ChangeAdmin';
 
