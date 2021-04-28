@@ -25,8 +25,9 @@ export default function RegisterAdmin(){
             setName('');
             setEmail('');
             setPassword('');
-            alert(  'Não foi possível cadastrar o Adminstrador\n' + 
-                    'Checar se a senha tem  tem no mínimo 8 digitos com uma letra e um número');
+            alert(  'Não foi possível cadastrar o Adminstrador.\n' + 
+                    'Checar se a senha tem tem no mínimo 8 digitos com uma letra e um número '+
+                    'ou o email é válido');
         }
     }
 

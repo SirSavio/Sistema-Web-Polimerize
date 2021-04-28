@@ -135,5 +135,24 @@ module.exports = {
                 error: "Operation not permitted, verify your password"
             });
         }
+    },
+
+    async erase(request, response){
+        const {id} = request.body;
+        //validar que não serão excluidos todos os admins 
+        const [count] = await connection('admin').count();
+        
+        if(count['count(*)'] > 1 ){
+            const res = await connection('admin')
+                .where('id', id)
+                .delete()
+            ;
+
+            if(res){
+                return response.status(201).json({"status" :"Usuário excluido"});
+            }
+        }
+
+        return response.status(401).json({ststus:"Operation not permitted"});
     }
 }

@@ -5,6 +5,7 @@ export default function ChangeAdmin(){
     const [data, setData] = useState([]);
     const [adimChange,setAdimChange] = useState(false);
 
+
     async function change(e){
         e.preventDefault();
 
@@ -33,6 +34,23 @@ export default function ChangeAdmin(){
             alert('Não foi possível Alterar os Dados do administrador, confira sua senha');
         }
     }
+
+    async function erase(id){
+        
+        const data = ({"id": id});
+        try{
+            await api.post('admin/erase',data)
+                .catch(error => {
+                    throw(error);
+                })
+            ;
+            setAdimChange('');
+        }
+        catch(error){
+            alert(error);
+        }  
+
+    }
             
     useEffect( () => {
         api.get('/admin/allAdmin')
@@ -43,6 +61,7 @@ export default function ChangeAdmin(){
             alert(error);
         })
     },[adimChange]);
+
 
     return(
         <div>
@@ -84,6 +103,16 @@ export default function ChangeAdmin(){
                             required
                         />
                         <button type={'submit'}>Alterar</button>
+                        <button 
+                            type={'button'} 
+                            onClick={() => {
+                                    if(window.confirm("Deletar esse Admin?")){
+                                        erase(data.id);
+                                    }
+                                }
+                            }
+                        >Excluir
+                        </button>
                     </form>
                 </div>
             ))}
