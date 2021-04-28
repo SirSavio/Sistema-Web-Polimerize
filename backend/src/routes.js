@@ -28,7 +28,7 @@ routes.get('/admin', celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminControlle
 routes.get('/admin/allAdmin',AdminController.indexAllAdmin);
 routes.put('/admin', celebrate(celebrateMethodsAdmin.changeAdmin), AdminController.change);
 routes.post('/admin', celebrate(celebrateMethodsAdmin.createAdmin) ,AdminController.create);
-routes.post('/admin/erase',AdminController.erase);
+routes.post('/admin/erase', celebrate(celebrateMethodsAdmin.eraseAdmin),AdminController.erase);
 
 //F5 F6
 routes.get('/sample/count',SampleController.indexCount);

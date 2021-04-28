@@ -31,3 +31,9 @@ exports.changeAdmin = {
         passwordConfirmation: Joi.string().required().regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
     })
 }
+
+exports.eraseAdmin = {
+    [Segments.BODY]: Joi.object().keys({
+        id: Joi.number().required().max(60)
+    })
+}
