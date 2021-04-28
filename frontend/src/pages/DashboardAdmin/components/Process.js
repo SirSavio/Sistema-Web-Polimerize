@@ -1,10 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import api from '../../../services/api';
+import moment from 'moment';
+
 export default function Process({id}){
     const [process, setProcess] = useState([]);
     const [processChange, setProcessChange] = useState(false);
-    var D = new Date();
-
+    
     useEffect(()=>{
         api.get(`/sample/process/${id}`)
             .then(responce => {
@@ -38,12 +39,13 @@ export default function Process({id}){
 
     	const name = e.target.name.value;
     	const describe = e.target.describe.value;
+        const admin_name = localStorage['adminPolimerizeName'];
     	const id_sample = id;
 
     	e.target.name.value = '';
     	e.target.describe.value = '';
 
-    	const dat = {name,describe,id_sample};
+    	const dat = {name,describe,admin_name,id_sample};
 
     	try{
     		await api.post('sample/process', dat)
@@ -66,6 +68,7 @@ export default function Process({id}){
             {process.map((pro) => (
                 <div className="card mb-2 bg-light" key={pro.id}>
                     <form onSubmit={change}>
+                        <p>Postado por: {pro.admin_name}</p>
                         <input
                             type="hidden"
                             name={"id"}
@@ -88,7 +91,7 @@ export default function Process({id}){
                             required
                             defaultValue={pro.describe}
                         />
-                        <span className="card-text" >{ D.toISOString(pro.date) }</span>
+                        <p className="card-text" >{moment(pro.date).format('DD/MM/YYYY HH:mm:ss')}</p>
                         <button className="btn border-secondary mb-2" type={'submit'}>Salvar</button>
                     </form>
                 </div>
