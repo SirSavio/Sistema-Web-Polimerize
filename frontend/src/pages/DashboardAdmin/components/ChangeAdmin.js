@@ -111,8 +111,7 @@ export default function ChangeAdmin(){
                                     }
                                 }
                             }
-                        >Excluir
-                        </button>
+                        >Excluir</button>
                     </form>
                 </div>
             ))}
