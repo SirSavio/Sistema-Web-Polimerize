@@ -8,7 +8,7 @@ export default function DashboardUser(){
     //variáveis
     const [sample, setAmostra] = useState([]);
     const [process, setProcess] = useState([]);
-    const code = localStorage.getItem('codeSample');
+    const code = sessionStorage.getItem('codeSample');
     const history = useHistory();
     
     /*-----------------------------------------------------*/
