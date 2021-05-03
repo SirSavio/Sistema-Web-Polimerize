@@ -52,6 +52,28 @@ export default function ManageSample(){
         }
     }
 
+    async function putDocumentation(e){
+        e.preventDefault();
+        const id = e.target.id.value;
+        const documentation = e.target.documentation.value;
+        if( documentation === undefined) documentation = '';
+        const data = {id,documentation};
+
+        try{
+            await api.put('sample/documentation',data)
+                .catch( error => {
+                    throw(error);
+                })
+            ;
+            (change)? setChange(false): setChange(true);
+            alert("Documentação Alterada");
+        }
+        catch(error){
+            (change)? setChange(false): setChange(true);
+            alert("Erro ao Alterar a documentação");
+        }
+    }
+
     return(
         <div>
             <div className="card-group ">
@@ -80,6 +102,22 @@ export default function ManageSample(){
                                     defaultValue={sam.state}
                                 />
                                 <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Atualizar</button>
+                            </form>
+                            <form onSubmit={putDocumentation}>
+                                <h5 className="card-title">Documentação: </h5>
+                                <input 
+                                    type="hidden"
+                                    name={"id"}
+                                    required
+                                    defaultValue={sam.id}
+                                />
+                                <input
+                                    className="form-control" 
+                                    type="text"
+                                    name="documentation"
+                                    defaultValue={sam.documentation}
+                                />
+                                <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Salvar</button>
                             </form>
                             
                             {/* método dos processos */}

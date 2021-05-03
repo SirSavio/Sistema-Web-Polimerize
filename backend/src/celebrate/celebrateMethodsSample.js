@@ -27,3 +27,10 @@ exports.changeSampleId = {
     })
 
 }
+
+exports.createDocumentation = {
+    [Segments.BODY]: Joi.object().keys({
+        id: Joi.string().required(),
+        documentation: Joi.string().allow(null, '').max(500)
+    })
+}

@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { request } = require('http');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -67,6 +68,24 @@ module.exports = {
             "code": code
         });
     },
+    
+    async createDocumentation(request, response){
+        const {documentation , id} = request.body;
+        console.log(id,documentation);
+
+
+        const res = await connection('sample')
+            .where('id', id)
+            .update({"documentation": documentation})
+        ;
+
+        if(res){
+            return response.status(201).json();
+        }
+
+        return response.status(401).json();
+
+    },
 
     // F6
     async change(request, response){
@@ -74,13 +93,11 @@ module.exports = {
 
         await connection('sample')
             .where('id', id)
-            .update({
-                'state': state
-            })
+            .update({'state': state})
         ;
-
-        return response.status(200).json({
-            'status': "Rastreaménto Atualizado" 
-        });
+            
+            return response.status(200).json({
+                'status': "Rastreaménto Atualizado" 
+            });
+        }
     }
-}

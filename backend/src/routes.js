@@ -36,6 +36,7 @@ routes.get('/sample/count',SampleController.indexCount);
 routes.get('/sample', celebrate(celebrateMethodsSample.indexPages),SampleController.indexPages);
 routes.get('/sample/:code', celebrate(celebrateMethodsSample.IndexSample), SampleController.index)
 routes.put('/sample', celebrate(celebrateMethodsSample.changeSampleId),SampleController.change);
+routes.put('/sample/documentation',celebrate(celebrateMethodsSample.createDocumentation),SampleController.createDocumentation);
 routes.post('/sample', celebrate(celebrateMethodsSample.createSample),SampleController.create);
 
 //F7
