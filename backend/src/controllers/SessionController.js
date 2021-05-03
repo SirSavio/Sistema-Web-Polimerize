@@ -52,8 +52,6 @@ module.exports = {
         .select('email','password', 'id')
         ;
         
-        console.log(res);
-        
         // o Que é verificado?
         // se o email existe no banco
         // se esse email existe -> hash -> descriptograva o tokin 
