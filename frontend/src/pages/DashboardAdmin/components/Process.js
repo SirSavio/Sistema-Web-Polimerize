@@ -39,8 +39,8 @@ export default function Process({id}){
 
     	const name = e.target.name.value;
     	const describe = e.target.describe.value;
-        const admin_name = localStorage['adminPolimerizeName'];
-    	const id_sample = id;
+        const admin_name = sessionStorage.getItem('adminPolimerizeName');
+        const id_sample = id;
 
     	e.target.name.value = '';
     	e.target.describe.value = '';

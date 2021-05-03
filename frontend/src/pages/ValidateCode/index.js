@@ -17,9 +17,11 @@ export default function ValidateCode(){
             await api.get(`validate/${code}`)
                 .catch(error => {
                     throw(error);
-                });
-            localStorage.removeItem('codeSample');
-            localStorage.setItem('codeSample', code);
+                })
+            ;
+            sessionStorage.removeItem('codeSample',);
+            sessionStorage.setItem('codeSample',code);
+
             history.push('/user/dashboard');
         }
         catch(error){

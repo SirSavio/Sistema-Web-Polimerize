@@ -8,9 +8,7 @@ export default function LoginAdmin(){
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const history = useHistory();
-    const nameAdmin = localStorage.getItem('adminPolimerizeName');
-    
-    
+    const nameAdmin = sessionStorage.getItem('adminPolimerizeName');
     /*-----------------------------------------------------*/
     //controle
     if(nameAdmin){
@@ -29,9 +27,10 @@ export default function LoginAdmin(){
     /*-----------------------------------------------------*/
     //funções
     async function Logout(){
-        localStorage.removeItem('adminPolimerizeToken');
-        localStorage.removeItem('adminPolimerizeName');
-        localStorage.removeItem('adminPolimerizeEmail');
+        sessionStorage.removeItem('adminPolimerizeToken');
+        sessionStorage.removeItem('adminPolimerizeName');
+        sessionStorage.removeItem('adminPolimerizeEmail');
+
         history.push('/login')
     }
 
@@ -43,9 +42,9 @@ export default function LoginAdmin(){
             try{
                 await api.post('session', data)
                     .then(res => {
-                        localStorage.setItem('adminPolimerizeToken', res.data.token);
-                        localStorage.setItem('adminPolimerizeName', res.data.name);
-                        localStorage.setItem('adminPolimerizeEmail', res.data.email);
+                        sessionStorage.setItem('adminPolimerizeToken', res.data.token);
+                        sessionStorage.setItem('adminPolimerizeName', res.data.name);
+                        sessionStorage.setItem('adminPolimerizeEmail', res.data.email);
                     })
                     .catch(error => {
                         throw(error);
