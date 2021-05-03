@@ -29,8 +29,9 @@ export default function LoginAdmin(){
     /*-----------------------------------------------------*/
     //funções
     async function Logout(){
-        localStorage.removeItem('adminPolimerizeId');
+        localStorage.removeItem('adminPolimerizeToken');
         localStorage.removeItem('adminPolimerizeName');
+        localStorage.removeItem('adminPolimerizeEmail');
         history.push('/login')
     }
 
@@ -40,13 +41,16 @@ export default function LoginAdmin(){
         const data = {email,password};
 
             try{
-                const res = await api.post('session', data)
+                await api.post('session', data)
+                    .then(res => {
+                        localStorage.setItem('adminPolimerizeToken', res.data.token);
+                        localStorage.setItem('adminPolimerizeName', res.data.name);
+                        localStorage.setItem('adminPolimerizeEmail', res.data.email);
+                    })
                     .catch(error => {
                         throw(error);
-                    });
-                localStorage.setItem('adminPolimerizeId', res.data.id);
-                localStorage.setItem('adminPolimerizeName', res.data.name);
-
+                    })
+                ;
                 history.push('/admin/dashboard')
             }
             catch(error){

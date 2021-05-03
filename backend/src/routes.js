@@ -22,6 +22,7 @@ const routes = express.Router();
 
 //F4
 routes.post('/session',celebrate(celebrateMethodsSession.createSession) ,SessionController.create);
+routes.post('/session/check', SessionController.check);
 
 //F2 e F3
 routes.get('/admin', celebrate(celebrateMethodsAdmin.indexAdmin) ,AdminController.index);

@@ -22,8 +22,8 @@ export default function DashboardUser(){
 
     useEffect(()=>{
         api.get(`sample/process/${sample.id}`)
-            .then(responce => {
-                setProcess(responce.data);
+            .then(response => {
+                setProcess(response.data);
             })
     },[sample]);
 
