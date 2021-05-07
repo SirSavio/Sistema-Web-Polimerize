@@ -22,7 +22,6 @@ module.exports = {
         //recuperar a se senha do hash e testar
         bcrypt.compare(password,res.password , (err, result) => {
                 if(result){
-                    console.log(res.data);
                     const myEmail = res.email;
                     const myName = res.name;
                     const myHash = res.password;
