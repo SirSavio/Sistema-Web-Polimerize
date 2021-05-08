@@ -76,8 +76,6 @@ module.exports = {
     
     async createDocumentation(request, response){
         const {documentation , id} = request.body;
-        console.log(id,documentation);
-
 
         const res = await connection('sample')
             .where('id', id)

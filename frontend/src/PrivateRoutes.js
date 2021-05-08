@@ -24,9 +24,8 @@ export default function PrivateRouter({component: Component, ...res}){
                     ? null
                     : log === true
                     ?   (<Component {...props}/>) 
-                    :   (alert("Faça login para acessar esse conteudo"), 
-                         <Redirect to={{pathname: "/", state:{from: props.location}}}/>
-                        )
+                    :   (   alert("Faça login para acessar esse conteudo"), 
+                            <Redirect to={{pathname: "/", state:{from: props.location}}}/>)
             }
         />
     );

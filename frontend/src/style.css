@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'timeburnernormal';
+    src:local('timeburnernormal'), 
+        url(./font/timeburner/timeburnernormal.ttf)
+        format('truetype')
+    ;
+}
+
+@font-face {
+    font-family: 'economica';
+    src:local('economica'), 
+        url(./font/Economica/Economica-Regular.ttf)
+        format('truetype')
+    ;
+}
+
+@font-face {
+    font-family: 'please_write_me_a_song';
+    src:local('please_write_me_a_song'), 
+        url(./font/please_write_me_a_song/Please\ write\ me\ a\ song.ttf)
+        format('truetype')
+    ;
+}
