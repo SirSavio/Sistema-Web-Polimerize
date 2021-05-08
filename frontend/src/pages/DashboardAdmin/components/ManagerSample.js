@@ -55,8 +55,8 @@ export default function ManageSample(){
     async function putDocumentation(e){
         e.preventDefault();
         const id = e.target.id.value;
-        const documentation = e.target.documentation.value;
-        if( documentation === undefined) documentation = '';
+        var documentation = e.target.documentation.value;
+        if(documentation === undefined) documentation = '';
         const data = {id,documentation};
 
         try{
@@ -94,13 +94,17 @@ export default function ManageSample(){
                                     required
                                     defaultValue={sam.id}
                                 />
-                                <input
-                                    className="form-control" 
-                                    type="text"
-                                    name="state"
-                                    required
-                                    defaultValue={sam.state}
-                                />
+                                <select className="form-control" name={"state"} required>
+                                    <option>Kit para coleta da amostra enviado</option>
+                                    <option>Amostra em transporte</option>
+                                    <option>Amostra recebida na sede da Polimerize</option>
+                                    <option>Processamento da amostra</option>
+                                    <option>Material enviado para sequenciamento</option>
+                                    <option>Sequenciamento</option>
+                                    <option>Análise dos dados de sequenciamento</option>
+                                    <option>Amostra em análise</option>
+                                    <option>Concluído</option>
+                                </select>
                                 <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Atualizar</button>
                             </form>
                             <form onSubmit={putDocumentation}>
@@ -148,7 +152,7 @@ export default function ManageSample(){
                         }
                     }}
                 >Próxima</button>
-            </dir>/
+            </dir>
         </div>
     )
 }

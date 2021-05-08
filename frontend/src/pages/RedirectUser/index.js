@@ -5,10 +5,14 @@ export default function RedirectUser(){
     const history = useHistory();
     
     return(
-        <div>
-            <button type={'submit'} onClick={() => history.push('/sample/validate')}>Consultar Amostra</button>
-            <button type={'submit'} onClick={() => history.push('/admin/dashboard')}>Administração</button>
-            <button type={'submit'} onClick={() => history.push('/login')}>Login</button>
+        <div className="container">
+            <div className="card">
+                <div>
+                    <button type={'submit'} onClick={() => history.push('/sample/validate')}>Consultar Amostra</button>
+                    <button type={'submit'} onClick={() => history.push('/admin/dashboard')}>Administração</button>
+                    <button type={'submit'} onClick={() => history.push('/login')}>Login</button>
+                </div>
+            </div>
         </div>
     );
 }

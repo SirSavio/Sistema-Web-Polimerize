@@ -40,8 +40,22 @@ module.exports = {
     //F5
     async create(request, response){
         const date = new Date();
-        const {patientName, description, state} = request.body;
-        var code = crypto.randomBytes(4).toString('HEX');
+        //patientName, no ínico o cliente era tratado como passiente, por isso o nome da variável
+        const {patientName, description, state, originSample} = request.body;
+
+        var code;
+        var padaoPolimerize = "0508" + originSample;
+        var randCode = crypto.randomBytes(4).toString('HEX');
+        var testCode = padaoPolimerize + randCode;
+        
+
+        //enquanto o código gerado não for único no banco vai gerar um novo;
+        while(await connection('sample').select('code').where('code',testCode).first()){
+            randCode = crypto.randomBytes(4).toString('HEX');
+            testCode = padaoPolimerize + randCode;
+        }
+
+        code = testCode;
 
         const id_sample = await connection('sample')
             .insert({
@@ -51,15 +65,6 @@ module.exports = {
                 'documentation': '',
                 state,
                 date
-            })
-        ;
-        
-        //garantir que só haverá um código de amostra
-        code =   code + '-' + id_sample;
-        await connection('sample')
-            .where('id', id_sample)
-            .update({
-                code: code
             })
         ;
         

@@ -16,7 +16,8 @@ exports.createSample = {
         patientName: Joi.string().required().max(60),
         description: Joi.string().required().max(500),
         documentation: Joi.string().allow(null, '').max(500),
-        state: Joi.string().required().max(60)
+        state: Joi.string().required().max(60),
+        originSample: Joi.string().required().max(60),
     })
 }
 

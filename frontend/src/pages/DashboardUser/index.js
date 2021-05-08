@@ -35,9 +35,9 @@ export default function DashboardUser(){
             </div>
             <div>
                 <h1>Status da Amostra</h1>
-                <span>A amostra se encontra em: {sample.state}</span>
+                <span>{sample.state}</span>
             </div>
-            {sample.documentation && (<a href={sample.documentation} > Relatório </a>)}
+            {sample.documentation && (<a href={sample.documentation} target="_blank" > Relatório </a>)}
             <div>
                 <h1>Dados da amostra</h1>
                 <span>Nome do Cliente: {sample.patientName}</span>
