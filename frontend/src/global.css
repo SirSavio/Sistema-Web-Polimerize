@@ -21,3 +21,25 @@
         format('truetype')
     ;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font: 400 18px timeburnernormal;
+    -webkit-font-smoothing: antialiased;
+}
+
+input, button, textarea{
+    font: 400 20px timeburnernormal;
+}
+
+button{
+    background-color: #ff3f95;
+    color: #ffffff;
+    cursor: pointer;
+}
