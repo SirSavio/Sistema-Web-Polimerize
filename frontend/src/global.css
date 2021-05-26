@@ -55,12 +55,6 @@ ul{
     padding: 0;
 }
 
-button{
-    background-color: #ff3f95;
-    color: #ffffff;
-    cursor: pointer;
-}
-
 @media (max-width: 600px){
     body{
         background-size: auto;

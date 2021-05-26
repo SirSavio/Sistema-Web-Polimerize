@@ -3,6 +3,8 @@ import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import './style.css';
 
+import Logo from '../../image/Logo-Negativo-site.png';
+
 export default function ValidateCode(){
     /*-----------------------------------------------------*/
     //variáveis
@@ -33,17 +35,25 @@ export default function ValidateCode(){
 
     /*-----------------------------------------------------*/
     return(
-        <div>
-            <form onSubmit={Validate}>
-                <input 
-                    type="text" 
-                    required
-                    placeholder={'Digite o código da amostra'}
-                    value={code}
-                    onChange={e => setCode(e.target.value)}
-                />
-                <button type='submit'>Verificar</button>
-            </form>
+        <div className={'container-validate-code'}>
+            <section className={'main-validate-code'}>
+                <form className={'form-validate-code'} onSubmit={Validate}>
+                    <p>
+                        Digite o Código fornecido pela Polimerize para saber o status que que se encontra sua amostra
+                    </p>
+                    <input 
+                        type="text" 
+                        required
+                        placeholder={'Digite o código da amostra'}
+                        value={code}
+                        onChange={e => setCode(e.target.value)}
+                    />
+                    <button type='submit'>Verificar</button>
+                </form>
+                <div className={'logo-validate-code'}>
+                    <img src={Logo} alt="" />
+                </div>
+            </section>
         </div>
     );
 }
