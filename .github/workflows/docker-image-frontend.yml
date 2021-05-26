@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+defaults:
+  run:
+    working-directory: frontend
+    
+jobs: 
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Azure Container Registry Login
+      uses: Azure/docker-login@v1
+      with:
+        username: nobugs 
+        password: u7mFD1UmwcWEm+yb28uuWEwsDV9E6pCU
+        login-server: nobugs.azurecr.io
+      
+    - name: Build e Push no Azure Container Registry
+      run: |
+        docker build . --file DOCKERFILE --tag nobugs.azurecr.io/polimerize-frontend:latest
+        docker tag nobugs.azurecr.io/polimerize-frontend:latest nobugs.azurecr.io/polimerize-frontend:$(date +%s)
+        docker push nobugs.azurecr.io/polimerize-frontend
