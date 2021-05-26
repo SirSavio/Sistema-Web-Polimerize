@@ -51,7 +51,6 @@
 }
 
 .nav-redirect ul li a svg{
-    margin-bottom: 2px;
     margin-left: 10px;
 }
 
@@ -83,7 +82,7 @@
     .nav-redirect ul li a{
         font-size: 0.9em;
     }
-    
+
     .nav-redirect ul li + li{
         margin-left: 20px;
     }
