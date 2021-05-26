@@ -27,6 +27,6 @@ jobs:
       
     - name: Build e Push no Azure Container Registry
       run: |
-        docker build . --file DOCKERFILE --tag nobugs.azurecr.io/polimerize:latest
-        docker tag nobugs.azurecr.io/polimerize:latest nobugs.azurecr.io/polimerize:$(date +%s)
-        docker push nobugs.azurecr.io/polimerize
+        docker build . --file DOCKERFILE --tag nobugs.azurecr.io/polimerize-backend:latest
+        docker tag nobugs.azurecr.io/polimerize-backend:latest nobugs.azurecr.io/polimerize-backend:$(date +%s)
+        docker push nobugs.azurecr.io/polimerize-backend
