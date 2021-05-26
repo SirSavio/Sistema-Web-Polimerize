@@ -79,13 +79,17 @@
     }
 }
 
-@media ((max-width: 900px) and (min-width: 600px) ) {
+@media (max-width: 900px) and (min-width: 600px){
     .nav-redirect ul li a{
-
         font-size: 0.9em;
     }
+    
     .nav-redirect ul li + li{
         margin-left: 20px;
+    }
+
+    .nav-redirect ul li a svg{
+        margin-left: 10px;
     }
     
 }
