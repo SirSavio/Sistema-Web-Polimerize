@@ -32,14 +32,37 @@
 body{
     font: 400 18px timeburnernormal;
     -webkit-font-smoothing: antialiased;
+    
+    background-image: url(image/fundo.jpeg);
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
-input, button, textarea{
+input, button, textarea, li{
     font: 400 20px timeburnernormal;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    padding: 0;
 }
 
 button{
     background-color: #ff3f95;
     color: #ffffff;
     cursor: pointer;
+}
+
+@media (max-width: 600px){
+    body{
+        background-size: auto;
+    }
 }

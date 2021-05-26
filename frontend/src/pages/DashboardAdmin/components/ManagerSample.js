@@ -76,25 +76,25 @@ export default function ManageSample(){
 
     return(
         <div>
-            <div className="card-group ">
+            <div>
                 {sample.map((sam) => (
-                    <div align="center" className="card" key={sam.id}>
-                        <div className="card-body">
-                            <h5 className="card-title" htmlFor="">Codigo: {sam.code}</h5>
+                    <div align="center" key={sam.id}>
+                        <div>
+                            <h5 htmlFor="">Codigo: {sam.code}</h5>
 
-                            <p className="card-text"> {sam.patientName} </p>
+                            <p> {sam.patientName} </p>
 
-                            <p className="card-text"> {sam.description} </p>
+                            <p> {sam.description} </p>
                             
                             <form onSubmit={putState}>
-                                <h5 className="card-title">Estado: </h5>                   
+                                <h5>Estado: </h5>                   
                                 <input 
                                     type="hidden"
                                     name={"id"}
                                     required
                                     defaultValue={sam.id}
                                 />
-                                <select className="form-control" name={"state"} required>
+                                <select name={"state"} required>
                                     <option>Kit para coleta da amostra enviado</option>
                                     <option>Amostra em transporte</option>
                                     <option>Amostra recebida na sede da Polimerize</option>
@@ -105,10 +105,10 @@ export default function ManageSample(){
                                     <option>Amostra em análise</option>
                                     <option>Concluído</option>
                                 </select>
-                                <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Atualizar</button>
+                                <button type={'submit'}>Atualizar</button>
                             </form>
                             <form onSubmit={putDocumentation}>
-                                <h5 className="card-title">Documentação: </h5>
+                                <h5>Documentação: </h5>
                                 <input 
                                     type="hidden"
                                     name={"id"}
@@ -116,12 +116,11 @@ export default function ManageSample(){
                                     defaultValue={sam.id}
                                 />
                                 <input
-                                    className="form-control" 
                                     type="text"
                                     name="documentation"
                                     defaultValue={sam.documentation}
                                 />
-                                <button className="btn btn-primary mb-2 mt-2" type={'submit'}>Salvar</button>
+                                <button type={'submit'}>Salvar</button>
                             </form>
                             
                             {/* método dos processos */}
@@ -134,7 +133,6 @@ export default function ManageSample(){
             </div>
             <dir>
                 <button
-                    className="btn btn-primary mr-4"
                     type={'button'}
                     onClick={() => {
                         if(page > 1){
@@ -143,8 +141,7 @@ export default function ManageSample(){
                     }}
                 > Anterior</button>
                 <label htmlFor="">Página {page}/{numPages} </label>
-                <button 
-                    className="btn btn-primary ml-4"
+                <button
                     type={'button'}
                     onClick={() => {
                         if(page < numPages){

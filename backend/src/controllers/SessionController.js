@@ -47,8 +47,8 @@ module.exports = {
 
         
         const [res] = await connection('admin')
-        .where("email", email)
-        .select('email','password', 'id')
+        	.where("email", email)
+        	.select('email','password', 'id')
         ;
         
         // o Que é verificado?

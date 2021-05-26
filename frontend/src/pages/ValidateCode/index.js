@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
+import './style.css';
 
 export default function ValidateCode(){
     /*-----------------------------------------------------*/

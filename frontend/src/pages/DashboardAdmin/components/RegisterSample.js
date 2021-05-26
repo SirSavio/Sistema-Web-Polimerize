@@ -42,7 +42,7 @@ export default function RegisterSample(){
             <form onSubmit={registerSample}>
                 <input 
                     type="text" 
-                    placeholder={'Nome do paciente'}
+                    placeholder={'Nome do cliente'}
                     required
                     value={patientName}
                     onChange={e => setPatientName(e.target.value)}

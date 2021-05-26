@@ -12,7 +12,7 @@ export default function Process({id}){
                 setProcess(responce.data);
             })
         ;
-    },[id,setProcess,processChange])
+    },[id,setProcess,processChange]);
 
     async function change(e){
         e.preventDefault();
